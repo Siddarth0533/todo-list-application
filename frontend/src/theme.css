@@ -1,0 +1,34 @@
+/* Theme for the whole app: modern blue to light gold gradient background and modern font */
+body {
+    background: linear-gradient(135deg, #003973 0%, #e5e5be 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+/* Card styling for better contrast and depth */
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    /* Fade-in animation for card */
+    animation: fadeInCard 0.8s ease;
+}
+
+/* Fade-in animation for tasks */
+.list-group-item {
+    background: rgba(255,255,255,0.95);
+    color: #003973;
+    border: none;
+    animation: fadeInTask 0.6s ease;
+}
+
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInTask {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
