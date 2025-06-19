@@ -24,7 +24,7 @@ function TodoList() {
 
     // Fetch all tasks from backend on component mount
     useEffect(() => {
-        fetch('${API_BASE}')
+        fetch(`${API_BASE}`)
             .then(response => response.json())
             .then(data => setTasks(data))
             .catch(error => console.error('Error fetching tasks:', error));
@@ -38,7 +38,7 @@ function TodoList() {
 
     // Add a new task
     const handleAdd = (title, description) => {
-        fetch('${API_BASE}/todos', {
+        fetch(`${API_BASE}/todos`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ function TodoList() {
             return;
         }
         if (task.title == null || task.description == null) {
-            fetch('${API_BASE}')
+            fetch(`${API_BASE}`)
                 .then(response => response.json())
                 .then(data => setTasks(data));
             showNotification('Task data was incomplete. Please try again.', 'error');
