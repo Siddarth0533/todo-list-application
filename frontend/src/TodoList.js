@@ -5,7 +5,7 @@ import './theme.css';
 function TodoList() {
 
     //API
-    const API_BASE = "https://todo-list-application-production.up.railway.app";
+    const API_BASE = `https://todo-list-application-production.up.railway.app`;
     // State for all tasks
     const [tasks, setTasks] = useState([]);
     // State for new task input fields
