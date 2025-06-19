@@ -3,6 +3,9 @@ import './theme.css';
 
 // Main TodoList component
 function TodoList() {
+
+    //API
+    const API_BASE = "https://todo-list-application-production.up.railway.app";
     // State for all tasks
     const [tasks, setTasks] = useState([]);
     // State for new task input fields
@@ -21,7 +24,7 @@ function TodoList() {
 
     // Fetch all tasks from backend on component mount
     useEffect(() => {
-        fetch('http://localhost:8080')
+        fetch('${API_BASE}')
             .then(response => response.json())
             .then(data => setTasks(data))
             .catch(error => console.error('Error fetching tasks:', error));
@@ -35,7 +38,7 @@ function TodoList() {
 
     // Add a new task
     const handleAdd = (title, description) => {
-        fetch('http://localhost:8080/todos', {
+        fetch('${API_BASE}/todos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +65,7 @@ function TodoList() {
 
     // Delete a task
     const handleDelete = (id) => {
-        fetch(`http://localhost:8080/todos/${id}`, {  
+        fetch(`${API_BASE}/todos/${id}`, {  
             method: 'DELETE',
         }).then(() => {
             setTasks(tasks.filter(task => task.id !== id));
@@ -92,7 +95,7 @@ function TodoList() {
     // Update a task (from modal)
     const handleUpdate = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:8080/todos/${editTaskId}`, {
+        fetch(`${API_BASE}/todos/${editTaskId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -124,7 +127,7 @@ function TodoList() {
             return;
         }
         if (task.title == null || task.description == null) {
-            fetch('http://localhost:8080')
+            fetch('${API_BASE}')
                 .then(response => response.json())
                 .then(data => setTasks(data));
             showNotification('Task data was incomplete. Please try again.', 'error');
@@ -136,7 +139,7 @@ function TodoList() {
             completed: !currentStatus
         };
         console.log('Sending to backend:', payload);
-        fetch(`http://localhost:8080/todos/${id}`, {
+        fetch(`${API_BASE}/todos/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
