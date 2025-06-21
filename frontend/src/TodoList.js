@@ -24,7 +24,7 @@ function TodoList() {
 
     // Fetch all tasks from backend on component mount
     useEffect(() => {
-        fetch(`${API_BASE}//todos`)
+        fetch(`${API_BASE}/todos`)
             .then(response => response.json())
             .then(data => setTasks(data))
             .catch(error => console.error('Error fetching tasks:', error));
