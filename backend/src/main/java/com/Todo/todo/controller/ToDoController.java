@@ -16,7 +16,10 @@ import com.Todo.todo.entity.ToDo;
 import com.Todo.todo.service.ToDoService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "https://todo-list-application-production.up.railway.app"
+})
 public class ToDoController {
 	@Autowired
 	ToDoService todoservice;
