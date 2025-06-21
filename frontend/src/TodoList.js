@@ -24,11 +24,11 @@ function TodoList() {
 
     // Fetch all tasks from backend on component mount
     useEffect(() => {
-        fetch(`${API_BASE}`)
+        fetch(`${API_BASE}//todos`)
             .then(response => response.json())
             .then(data => setTasks(data))
             .catch(error => console.error('Error fetching tasks:', error));
-    }, [API_BASE]);
+    }, []);
 
     // Show toast notification
     const showNotification = (message, type = 'success') => {
