@@ -34,7 +34,7 @@ public class ToDoController {
 		return todoservice.update(id,  todo);
 	}
 	
-	@GetMapping()
+	@GetMapping("/todos")
 	public List<ToDo> getAllTodos(){
 		return (List<ToDo>)todoservice.getAllTodos();
 	}
